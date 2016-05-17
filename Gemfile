@@ -47,6 +47,13 @@ gem 'certified'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#For AJAX file uploads
+gem 'remotipart'
+gem 'carrierwave'
+
+#For urls depending on name
+gem 'friendly_id'
+
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'

@@ -1,3 +1,5 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 <%= link_to "Signout", destroy_user_session_path, method: :delete %>
+<%= link_to "Edit", edit_user_registration_path(current_user) %>
+<%= link_to "Create New Poll", new_poll_path %>
