@@ -1,5 +1,16 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+List of all polls
+<% @polls.each do |poll| %>
+  <div class="row">
+    <%= link_to "#{poll.name}", poll_path(poll) %>
+    <canvas id="canvas">
+		  <img id="imageOne" src="http://lorempixel.com/400/400/city/1" />
+		  <img id="imageTwo" src="http://lorempixel.com/400/400/city/2" />
+		</canvas>
+
+    / <%= link_to( image_tag(poll.avatar_1_url), poll_path(poll), :class=>"work") %>
+    / <%= link_to( image_tag(poll.avatar_2_url), poll_path(poll), :class=>"work") %>
+  </div>
+<% end %>
 <%= link_to "Signout", destroy_user_session_path, method: :delete %>
 <%= link_to "Edit", edit_user_registration_path(current_user) %>
 <%= link_to "Create New Poll", new_poll_path %>

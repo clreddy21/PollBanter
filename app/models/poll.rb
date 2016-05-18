@@ -1,6 +1,7 @@
 class Poll < ActiveRecord::Base
   belongs_to :user
   has_many :votes
+  has_many :comments
 
   mount_uploader :avatar_1, AvatarUploader
   mount_uploader :avatar_2, AvatarUploader

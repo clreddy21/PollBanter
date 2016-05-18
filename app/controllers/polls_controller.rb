@@ -24,6 +24,7 @@ class PollsController < ApplicationController
 
 	def show
 		@poll = Poll.friendly.find(params[:id])
+		@vote = @poll.votes.new()
 	end
 
 	def edit

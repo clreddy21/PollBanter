@@ -1,34 +1,14 @@
-= form_for @poll, method: 'post', url: polls_path do |f|
-  .new-teacher-form1
-    .form-horizontal.row
-      .col-sm-12.col-md-3
-        .form-group
-          %p Basic Info
-          %hr
-        .form-group
-          %input.form-control1.input-box-shadow{:name => "poll[name]", :placeholder => "Name", :type => "text", required: true }/
-          %p Description
-          %hr
-        .form-group
-          %textarea.form-control1.control2.input-box-shadow.textarea-height{:name => "description", :placeholder => "About Poll....", :rows => "4", :cols => "2"}
-      .col-sm-12.col-md-3
-        .form-group
-          .m-t-40
-            %div.center-img
-              %img.img-responsive.avatar-user{:alt => "", :src => asset_path('default_avatar.jpg')}
-          .fileUpload.btn.btn-info.common-button
-            %span Upload Picture 1
-            %input.upload{:type => "file", :name => "poll[avatar_1]"}
-      .col-sm-12.col-md-3
-        .form-group
-          .m-t-40
-            %div.center-img
-              %img.img-responsive.avatar-user{:alt => "", :src => asset_path('default_avatar.jpg')}
-          .fileUpload.btn.btn-info.common-button
-            %span Upload Picture 2
-            %input.upload{:type => "file", :name => "poll[avatar_2]"}
-  .row
-    .col-md-12
-      .form-group.submit-teacher
-        %button.btn.btn-info.pull-right.common-button
-          Create Poll
+= form_for @poll, :html => {:multipart => true} do |f|
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br/
+    = f.text_field :description
+  %p
+    = f.file_field :avatar_1
+  %p
+    = f.file_field :avatar_2
+  %p= f.submit

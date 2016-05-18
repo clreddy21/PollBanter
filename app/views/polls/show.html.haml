@@ -1,6 +1,15 @@
 = "Poll Details"
 
-= "#{@poll.name}"
+= @poll.name
 = @poll.description	
-= @poll.avatar_1	
-= @poll.avatar_2
+
+= image_tag @poll.avatar_1_url
+= image_tag @poll.avatar_2_url
+
+= form_for(@vote) do |f|
+	= f.hidden_field :poll_id, :value => @poll.slug 
+  = f.radio_button :voted_option, 'vote_option_1', :checked => true
+  = label :vote_option_1, "#{@poll.vote_option_1}"
+  = f.radio_button :voted_option, 'vote_option_2'
+  = label :vote_option_2, "#{@poll.vote_option_2}"
+  = f.submit

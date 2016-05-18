@@ -50,6 +50,7 @@ gem 'certified'
 #For AJAX file uploads
 gem 'remotipart'
 gem 'carrierwave'
+# gem 'rmagick'
 
 #For urls depending on name
 gem 'friendly_id'
