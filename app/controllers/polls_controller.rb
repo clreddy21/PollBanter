@@ -23,8 +23,17 @@ class PollsController < ApplicationController
 	end
 
 	def show
-		@poll = Poll.friendly.find(params[:id])
-		@vote = @poll.votes.new()
+		@poll = Poll.includes(:votes).friendly.find(params[:id])
+		@comments = @poll.comments.includes(:user)
+		@comment = Comment.new
+		
+		if check_if_already_voted(@poll).present?
+			@voted = true
+			@vote = check_if_already_voted(@poll)
+		else
+			@voted = false
+			@vote = @poll.votes.new()
+		end
 	end
 
 	def edit
@@ -36,8 +45,10 @@ class PollsController < ApplicationController
 	private
 
   def poll_params
-    params.require(:poll).permit(:name, :description, :avatar_1, :avatar_2)
+    params.require(:poll).permit(:name, :description, :vote_option_1, :vote_option_2, :avatar_1, :avatar_2)
   end
 
-
+  def check_if_already_voted(poll)
+  	poll.votes.find_by(user_id: current_user.id)
+  end
 end

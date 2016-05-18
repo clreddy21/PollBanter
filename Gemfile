@@ -47,10 +47,10 @@ gem 'certified'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#For AJAX file uploads
+#For file uploads
 gem 'remotipart'
 gem 'carrierwave'
-# gem 'rmagick'
+gem 'mini_magick'
 
 #For urls depending on name
 gem 'friendly_id'
