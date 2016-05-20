@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.remotipart
+//= require kinetic-v5.1.0.min
 //= require_tree .

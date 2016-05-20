@@ -9,10 +9,19 @@
 = @poll.vote_option_2
 = image_tag @poll.avatar_2_url(:general)
 
-/ %canvas#canvas
-/   img#imageOne src=@poll.avatar_1_url
-/   img#imageTwo src=@poll.avatar_1_url
-/   img id="imageTwo" src="http://lorempixel.com/400/400/city/2"
+/ .pageOption
+/   %a.option{"data-inf" => "photo", :href => "#"}
+/     %img{:src => @poll.avatar_1_url(:general)}
+/   %a.option{"data-inf" => "cinema", :href => "#"}
+/     %img{:src => @poll.avatar_2_url(:general)}
+
+%canvas#canvas
+  = image_tag @poll.avatar_1_url(:general), :id => "imageOne"
+  = image_tag @poll.avatar_2_url(:general), :id => "imageTwo"
+
+
+
+
 
 .votes-details
   %h4
