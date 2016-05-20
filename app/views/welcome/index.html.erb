@@ -1,3 +1,36 @@
+<%if current_user.nil?%>
+  <%= link_to "Log in", new_user_session_path %><br/>
+  <%= link_to "Sign up", new_user_registration_path%><br/>
+  
+	<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
+	<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+
+<%else%>
+	<p>
+	  <%= form_tag search_users_path, :method => :get do %>
+		  <%= text_field_tag "search_key", "", :class=>"form-control search-box" %>
+	    <%= submit_tag( "Search Users") %>
+		<% end %>
+	</p>
+	<p>
+	  <%= form_tag search_polls_path, :method => :get do %>
+		  <%= text_field_tag "search_key", "", :class=>"form-control search-box" %>
+	    <%= submit_tag( "Search Polls") %>
+		<% end %>
+	</p>
+
+
+	<%if current_user.is_admin?%>
+		<%= link_to "List of Categories", categories_path %>
+		<%= link_to "List of Users", users_path %>
+	<%end%>
+	<%= link_to "Edit Profile", edit_user_registration_path(current_user) %>
+	<%= link_to "Change Passowrd", change_passwords_path %>
+	<%= link_to "Create New Poll", new_poll_path %>
+	<%= link_to "Signout", destroy_user_session_path, method: :delete %>
+<%end%>
+
+
 List of all polls
 <% @polls.each do |poll| %>
   <div class="row">
@@ -7,11 +40,7 @@ List of all polls
 		  <img id="imageTwo" src="http://lorempixel.com/400/400/city/2" />
 		</canvas>
 
-    / <%= link_to( image_tag(poll.avatar_1_url), poll_path(poll), :class=>"work") %>
-    / <%= link_to( image_tag(poll.avatar_2_url), poll_path(poll), :class=>"work") %>
+    <%= link_to( image_tag(poll.avatar_1_url(:general)), poll_path(poll), :class=>"work") %>
+    <%= link_to( image_tag(poll.avatar_2_url(:general)), poll_path(poll), :class=>"work") %>
   </div>
 <% end %>
-<%= link_to "Edit", edit_user_registration_path(current_user) %>
-<%= link_to "Change Passowrd", change_passwords_path %>
-<%= link_to "Create New Poll", new_poll_path %>
-<%= link_to "Signout", destroy_user_session_path, method: :delete %>

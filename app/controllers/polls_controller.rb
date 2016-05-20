@@ -1,11 +1,13 @@
 class PollsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
+  before_action :authorization_of_user, only: [:update, :edit, :deactivate]
 
 	def index
 	end
 
 	def new
 		@poll = Poll.new
+		@categories = Category.active
 	end
 
 	def create
@@ -26,7 +28,10 @@ class PollsController < ApplicationController
 		@poll = Poll.includes(:votes).friendly.find(params[:id])
 		@comments = @poll.comments.includes(:user)
 		@comment = Comment.new
-		
+		@can_edit = ((current_user.polls.include? @poll) || is_admin?) ? true : false
+
+		@votes_details = @poll.votes_details
+
 		if check_if_already_voted(@poll).present?
 			@voted = true
 			@vote = check_if_already_voted(@poll)
@@ -37,9 +42,29 @@ class PollsController < ApplicationController
 	end
 
 	def edit
+		@poll = Poll.friendly.find(params[:id])
 	end
 
 	def update
+		@poll = Poll.friendly.find(params[:id])
+		@poll.update(poll_params)
+		@poll.save!
+
+		redirect_to poll_path(@poll), :notice => "Poll has been updated successfully."
+	end
+
+	def deactivate
+		@poll = Poll.friendly.find(params[:id])
+		@poll.update(is_active: false)
+		@poll.save!
+		redirect_to @polls_path, notice: "#{@poll.name} has been removed."
+	end
+
+	def activate
+		@poll = Poll.friendly.find(params[:id])
+		@poll.update(is_active: true)
+		@poll.save!
+		redirect_to @polls_path, notice: "#{@poll.name} has been activated."
 	end
 
 	private
@@ -50,5 +75,14 @@ class PollsController < ApplicationController
 
   def check_if_already_voted(poll)
   	poll.votes.find_by(user_id: current_user.id)
+  end
+
+  def authorization_of_user
+  	poll = Poll.friendly.find(params[:id])
+  	if (current_user.polls.include? poll) || is_admin?
+  		true
+  	else
+  		redirect_to root_path, notice: "Sorry, but you don't have access to this path" 
+  	end
   end
 end

@@ -1,4 +1,7 @@
 = form_for @poll, :html => {:multipart => true} do |f|
+
+  %p
+    = f.select :category, @categories.pluck(:name), {}, {:class => 'form-control'}
   %p
     = f.label :name
     %br/

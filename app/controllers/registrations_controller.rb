@@ -11,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
         resource.update_without_password(params)
       end
     else
-      resource.update_with_password(params)
+      resource.update_without_password(params)
     end
   end
 end

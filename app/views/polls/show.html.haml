@@ -14,27 +14,40 @@
 /   img#imageTwo src=@poll.avatar_1_url
 /   img id="imageTwo" src="http://lorempixel.com/400/400/city/2"
 
-- if @voted
-  = form_for @vote,url: vote_path(@vote), method: 'put' do |f|
-    - if @vote.voted_option == 1
+.votes-details
+  %h4
+    = "Total votes polled: #{@votes_details[0]}"
+    %br
+    = "Votes polled for first option: #{@votes_details[1]}"
+    %br
+    = "Votes polled for second option: #{@votes_details[2]}"
+
+- if @can_edit
+  = link_to 'Update the poll', edit_poll_path(@poll)
+  = link_to 'Delete the poll', delete_polls_path(@poll)
+
+- else
+  - if @voted
+    = form_for @vote,url: vote_path(@vote), method: 'put' do |f|
+      - if @vote.voted_option == 1
+        = f.radio_button :voted_option, "#{@poll.vote_option_1}", :checked => true
+        = label :vote_option_1, "#{@poll.vote_option_1}"
+        = f.radio_button :voted_option, "#{@poll.vote_option_2}"
+        = label :vote_option_2, "#{@poll.vote_option_2}"
+      - else
+        = f.radio_button :voted_option, "#{@poll.vote_option_1}"
+        = label :vote_option_1, "#{@poll.vote_option_1}"
+        = f.radio_button :voted_option, "#{@poll.vote_option_2}", :checked => true
+        = label :vote_option_2, "#{@poll.vote_option_2}"
+      = f.submit 'Update your Vote'
+  - else
+    = form_for(@vote) do |f|
+      = f.hidden_field :poll_id, :value => @poll.slug 
       = f.radio_button :voted_option, "#{@poll.vote_option_1}", :checked => true
       = label :vote_option_1, "#{@poll.vote_option_1}"
       = f.radio_button :voted_option, "#{@poll.vote_option_2}"
       = label :vote_option_2, "#{@poll.vote_option_2}"
-    - else
-      = f.radio_button :voted_option, "#{@poll.vote_option_1}"
-      = label :vote_option_1, "#{@poll.vote_option_1}"
-      = f.radio_button :voted_option, "#{@poll.vote_option_2}", :checked => true
-      = label :vote_option_2, "#{@poll.vote_option_2}"
-    = f.submit 'Update your Vote'
-- else
-  = form_for(@vote) do |f|
-    = f.hidden_field :poll_id, :value => @poll.slug 
-    = f.radio_button :voted_option, "#{@poll.vote_option_1}", :checked => true
-    = label :vote_option_1, "#{@poll.vote_option_1}"
-    = f.radio_button :voted_option, "#{@poll.vote_option_2}"
-    = label :vote_option_2, "#{@poll.vote_option_2}"
-    = f.submit 'Cast your Vote'
+      = f.submit 'Cast your Vote'
 
 .comments
   = form_for @comment, url: comments_path do |f|
@@ -46,3 +59,6 @@
     = "Commented by #{comment.user.name}"
     %br
     = "#{comment.body}"
+    - if @can_edit
+      = link_to 'Update', edit_comment_path(comment)
+      = link_to 'Delete', delete_comments_path(comment)

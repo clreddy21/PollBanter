@@ -1,0 +1,26 @@
+= form_for @poll,url: poll_path(@poll), method: 'put' do |f|
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br/
+    = f.text_field :description
+  %p
+    = f.label :first_option
+    %br/
+    = f.text_field :vote_option_1
+  %p
+    = f.label :first_option_picture
+    %br/
+    = f.file_field :avatar_1
+  %p
+    = f.label :second_option
+    %br/
+    = f.text_field :vote_option_2
+  %p
+    = f.label :second_option_picture
+    %br/
+    = f.file_field :avatar_2
+  %p= f.submit

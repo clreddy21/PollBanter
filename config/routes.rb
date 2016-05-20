@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
 
   get 'welcome/index'
   root 'welcome#index'
@@ -15,10 +15,40 @@ Rails.application.routes.draw do
   end
 
 
+  resources :polls do
+    collection do
+      put 'deactivate/:id' => 'polls#deactivate', as: :delete
+      put 'activate/:id' => 'polls#activate', as: :activate
+    end
+  end
 
-  resources :polls
+  resources :comments do
+    collection do
+      put 'remove/:id' => 'comments#remove', as: :delete
+    end
+  end
+
+  resources :categories do
+    collection do
+      put 'deactivate/:id' => 'categories#deactivate', as: :delete
+      put 'activate/:id' => 'categories#activate', as: :activate
+    end
+  end
+
+  resources :users do
+    collection do
+      put 'deactivate/:id' => 'users#deactivate', as: :delete
+      put 'activate/:id' => 'users#activate', as: :activate
+    end
+  end
+
   resources :votes
-  resources :comments
+
+  get 'search/users' => 'search#users'
+  get 'search/polls' => 'search#polls'
+
+
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,11 @@
+= @user.name
+= @user.email
+= @user.mobile
+= link_to( image_tag(@user.avatar_url(:general)), user_path(@user), :class=>"work")
+
+- if @user.is_active
+	= "Active"
+	= link_to 'Deactivate', delete_users_path(@user), method: 'put'
+- else
+	= "InActive"
+	= link_to 'Activate', activate_users_path(@user), method: 'put'

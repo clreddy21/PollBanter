@@ -1,0 +1,18 @@
+= link_to 'Create New Category', new_category_path
+
+
+%h2
+	= 'List of Categories'
+
+- @categories.each do |category|
+	= category.name
+	- if category.is_active
+		= "Active"
+		= link_to 'Deactivate', delete_categories_path(category), method: 'put'
+	- else
+		= "InActive"
+		= link_to 'Activate', activate_categories_path(category), method: 'put'
+	= link_to 'Edit Category', edit_category_path(category)
+
+	%br
+	%br

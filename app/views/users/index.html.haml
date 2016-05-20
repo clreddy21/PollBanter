@@ -1,0 +1,16 @@
+%h2
+	= 'List of Users'
+
+- @users.each do |user|
+	= user.name
+	= link_to( image_tag(user.avatar_url(:general)), user_path(user), :class=>"work")
+
+	- if user.is_active
+		= "Active"
+		= link_to 'Deactivate', delete_users_path(user), method: 'put'
+	- else
+		= "InActive"
+		= link_to 'Activate', activate_users_path(user), method: 'put'
+	
+	%br
+	%br

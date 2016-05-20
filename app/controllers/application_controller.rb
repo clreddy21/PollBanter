@@ -22,5 +22,7 @@ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email,:password).merge!(:type => "Member", :is_active => true)}
+    devise_parameter_sanitizer.for(:account_update) << [:name, :email, :mobile, :avatar]
+
   end
 end

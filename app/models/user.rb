@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :identities
 
+  mount_uploader :avatar, AvatarUploader
+
+  scope :active, -> { where(:is_active => true) }
+  scope :in_active, -> { where(:is_active => false) }
+
+  def self.search(search)
+    return where("name LIKE ? ", "%#{search}%")
+  end
+
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
@@ -44,11 +53,11 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    self.type == "admin"
+    self.type == "Admin"
   end
   
   def is_member?
-    self.type == "member"
+    self.type == "Member"
   end
 
 
