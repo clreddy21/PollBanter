@@ -12,26 +12,43 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :identities
 
-  def twitter
-    identities.where( :provider => "twitter" ).first
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
   end
 
-  def twitter_client
-    @twitter_client ||= Twitter.client( access_token: twitter.accesstoken )
+  def password_required?
+    super && provider.blank?
   end
 
-  def facebook
-    identities.where( :provider => "facebook" ).first
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
   end
 
-  def facebook_client
-    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
-  end
 
   def slug_candidates
     [
       :name
     ]
+  end
+
+  def is_admin?
+    self.type == "admin"
+  end
+  
+  def is_member?
+    self.type == "member"
   end
 
 
