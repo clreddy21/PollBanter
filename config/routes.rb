@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-    
+  get "/404" => "errors#not_found"
+  get "/500" => "errors#internal_server_error"
+
   resources :passwords do
     collection do
       put 'update_password', as: :update
