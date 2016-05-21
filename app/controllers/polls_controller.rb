@@ -34,7 +34,7 @@ class PollsController < ApplicationController
 
 		@votes_details = @poll.votes_details
 
-		if check_if_already_voted(@poll).present?
+		if current_user && check_if_already_voted(@poll).present?
 			@voted = true
 			@vote = check_if_already_voted(@poll)
 		else
