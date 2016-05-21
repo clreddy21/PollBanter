@@ -28,7 +28,9 @@ class PollsController < ApplicationController
 		@poll = Poll.includes(:votes).friendly.find(params[:id])
 		@comments = @poll.comments.includes(:user)
 		@comment = Comment.new
-		@can_edit = ((current_user.polls.include? @poll) || is_admin?) ? true : false
+		if current_user
+			@can_edit = ((current_user.polls.include? @poll) || is_admin?) ? true : false
+		end
 
 		@votes_details = @poll.votes_details
 
