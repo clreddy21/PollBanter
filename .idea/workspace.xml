@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c8c2a503-b732-4224-bfb5-a81f90e70218" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/polls_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/polls_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/votes_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/votes_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/polls/show.html.haml" afterPath="$PROJECT_DIR$/app/views/polls/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PollBanter.iws" />
@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="polls_controller.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="polls_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/polls_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1632">
-              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.5205047" vertical-offset="826" max-vertical-offset="1632">
+              <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -92,8 +92,8 @@
       <file leaf-file-name="show.html.haml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/polls/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.3846154" vertical-offset="378" max-vertical-offset="1241">
-              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+            <state vertical-scroll-proportion="-3.7692308" vertical-offset="378" max-vertical-offset="1241">
+              <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -102,9 +102,11 @@
       <file leaf-file-name="votes_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <marker date="1463837433376" expanded="true" signature="95:737" placeholder="if ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="new.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6644737" vertical-offset="174" max-vertical-offset="782">
-              <caret line="34" column="64" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="64" />
+            <state vertical-scroll-proportion="-14.230769" vertical-offset="174" max-vertical-offset="782">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -145,10 +147,10 @@
         <option value="$PROJECT_DIR$/db/migrate/20160521020410_create_comments.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160521015736_create_categories.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20160521020149_create_polls.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/polls_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/polls/show.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/votes_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/comments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/polls/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/polls_controller.rb" />
       </list>
     </option>
   </component>
@@ -494,7 +496,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463836842898</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor refactoring.">
+      <created>1463837444261</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1463837444261</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -780,27 +788,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/polls_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1632">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/polls/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.3846154" vertical-offset="378" max-vertical-offset="1241">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/votes_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1463837433376" expanded="true" signature="95:737" placeholder="if ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -814,8 +808,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6644737" vertical-offset="174" max-vertical-offset="782">
-          <caret line="34" column="64" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="64" />
+        <state vertical-scroll-proportion="-14.230769" vertical-offset="174" max-vertical-offset="782">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/polls/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7692308" vertical-offset="378" max-vertical-offset="1241">
+          <caret line="28" column="67" selection-start-line="28" selection-start-column="67" selection-end-line="28" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/polls_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5205047" vertical-offset="826" max-vertical-offset="1632">
+          <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
           <folding />
         </state>
       </provider>

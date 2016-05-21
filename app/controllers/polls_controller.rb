@@ -59,14 +59,14 @@ class PollsController < ApplicationController
 		@poll = Poll.friendly.find(params[:id])
 		@poll.update(is_active: false)
 		@poll.save!
-		redirect_to @polls_path, notice: "#{@poll.name} has been removed."
+		redirect_to root_path, notice: "#{@poll.name} has been removed."
 	end
 
 	def activate
 		@poll = Poll.friendly.find(params[:id])
 		@poll.update(is_active: true)
 		@poll.save!
-		redirect_to @polls_path, notice: "#{@poll.name} has been activated."
+		redirect_to root_path, notice: "#{@poll.name} has been activated."
 	end
 
 	private
