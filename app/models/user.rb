@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :identities
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   mount_uploader :avatar, AvatarUploader
 
   scope :active, -> { where(:is_active => true) }
