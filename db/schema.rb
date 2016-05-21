@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520083730) do
+ActiveRecord::Schema.define(version: 20160521022805) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20160520083730) do
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "poll_id"
-    t.text     "body"
+    t.string   "body"
+    t.boolean  "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,38 +60,41 @@ ActiveRecord::Schema.define(version: 20160520083730) do
 
   create_table "polls", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "vote_option_1"
     t.string   "vote_option_2"
+    t.text     "avatar_1"
+    t.text     "avatar_2"
     t.integer  "user_id"
+    t.integer  "category_id"
+    t.boolean  "is_active"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "slug"
-    t.string   "avatar_1"
-    t.string   "avatar_2"
   end
 
+  add_index "polls", ["category_id"], name: "index_polls_on_category_id"
   add_index "polls", ["slug"], name: "index_polls_on_slug", unique: true
   add_index "polls", ["user_id"], name: "index_polls_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "email",                  default: "",       null: false
-    t.string   "encrypted_password",     default: "",       null: false
+    t.string   "mobile"
+    t.text     "avatar"
+    t.boolean  "is_active"
+    t.string   "type"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,        null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "mobile"
-    t.string   "avatar"
-    t.string   "type",                   default: "Member"
-    t.boolean  "is_active",              default: true
     t.string   "slug"
   end
 
