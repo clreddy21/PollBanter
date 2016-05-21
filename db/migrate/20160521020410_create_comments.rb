@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :poll, index: true, foreign_key: true
       t.string :body
-      t.boolean :is_active
+      t.boolean :is_active, :default => true
 
       t.timestamps null: false
     end

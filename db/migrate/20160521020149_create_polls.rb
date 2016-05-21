@@ -9,7 +9,7 @@ class CreatePolls < ActiveRecord::Migration
       t.text :avatar_2
       t.references :user, index: true, foreign_key: true
       t.references :category, index: true, foreign_key: true
-      t.boolean :is_active
+      t.boolean :is_active, :default => true
 
       t.timestamps null: false
     end

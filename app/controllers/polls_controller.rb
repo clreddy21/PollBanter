@@ -70,7 +70,7 @@ class PollsController < ApplicationController
 	private
 
   def poll_params
-    params.require(:poll).permit(:name, :description, :vote_option_1, :vote_option_2, :avatar_1, :avatar_2)
+    params.require(:poll).permit(:name, :description, :vote_option_1, :vote_option_2, :avatar_1, :avatar_2, :category_id)
   end
 
   def check_if_already_voted(poll)
