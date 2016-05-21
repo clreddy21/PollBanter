@@ -16,4 +16,5 @@
 //= require jquery.remotipart
 //= require kinetic-v5.1.0.min
 //= require social-share-button
+//= require disqus_rails
 //= require_tree .

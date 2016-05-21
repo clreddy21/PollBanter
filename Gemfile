@@ -58,6 +58,10 @@ gem 'friendly_id'
 #For social sharing
 gem 'social-share-button'
 
+#For Disqus integration
+gem 'disqus_rails'
+
+
 
 group :development, :test do
 	# Use sqlite3 as the database for Active Record

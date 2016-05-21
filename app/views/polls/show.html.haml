@@ -67,3 +67,6 @@
     - if @can_edit
       = link_to 'Update', edit_comment_path(comment)
       = link_to 'Delete', delete_comments_path(comment)
+
+
+- disqus_thread @poll.slug, @poll.name
