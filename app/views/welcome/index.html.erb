@@ -36,8 +36,8 @@ List of all polls
   <div class="row">
     <%= link_to "#{poll.name}", poll_path(poll) %>
     <canvas id="canvas">
-		  <img id="imageOne" src="http://lorempixel.com/400/400/city/1" />
-		  <img id="imageTwo" src="http://lorempixel.com/400/400/city/2" />
+		  <img id="imageOne" src=poll.avatar_1_url(:general) />
+		  <img id="imageTwo" src=poll.avatar_2_url(:general) />
 		</canvas>
 
     <%= link_to( image_tag(poll.avatar_1_url(:general)), poll_path(poll), :class=>"work") %>
