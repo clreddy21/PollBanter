@@ -4,6 +4,5 @@ class AddColummnsToUserAndPoll < ActiveRecord::Migration
     add_index :users, :slug, unique: true
     add_column :polls, :slug, :string
     add_index :polls, :slug, unique: true
-
   end
 end

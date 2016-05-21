@@ -8,6 +8,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.nil?
       @user = User.create( name: auth.info.name, email: auth.info.email || "" )
+
+      @user.save!
       @identity.update_attribute( :user_id, @user.id )
     end
 
