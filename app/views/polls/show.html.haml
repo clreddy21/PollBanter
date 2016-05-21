@@ -13,6 +13,8 @@
   = image_tag @poll.avatar_1_url(:general), :id => "imageOne"
   = image_tag @poll.avatar_2_url(:general), :id => "imageTwo"
 
+= social_share_button_tag(@poll.name, 'data-twitter-title' => @poll.name, :popup => true, :rel => 'pollbanter',
+  :url => poll_url(@poll), :image => @poll.avatar_1_url(:general), desc: @poll.description)
 
 
 

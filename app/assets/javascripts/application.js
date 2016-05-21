@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery.remotipart
 //= require kinetic-v5.1.0.min
+//= require social-share-button
 //= require_tree .
