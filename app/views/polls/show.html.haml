@@ -28,7 +28,7 @@
     = "Votes polled for second option: #{@votes_details[2]}"
 
 - if @can_edit
-  = link_to 'Update the poll', edit_poll_path(@poll), method: 'put'
+  = link_to 'Update the poll', edit_poll_path(@poll), method: 'get'
   = link_to 'Delete the poll', delete_polls_path(@poll), method: 'put'
 
 - else

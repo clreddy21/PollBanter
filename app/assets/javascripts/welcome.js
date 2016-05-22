@@ -13,7 +13,7 @@ c.fillStyle = pattern1;
 c.beginPath();
 c.moveTo(0, 0);
 c.lineTo(0, 500);
-c.lineTo(670, 500);
+c.lineTo(1000, 500);
 c.closePath();
 c.fill();
 
@@ -21,7 +21,7 @@ c.fillStyle = pattern2;
 c.beginPath();
 c.moveTo(0, 0);
 c.lineTo(500, 0);
-c.lineTo(500, 375);
+c.lineTo(500, 250);
 
 c.closePath();
 c.fill();
